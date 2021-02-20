@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application version="8" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+            http://xmlns.jcp.org/xml/ns/javaee/application_8.xsd">
+  <display-name>WineApp-ear-1</display-name>
+  <module>
+    <ejb>/WineApp-ejb-1.jar</ejb>
+  </module>
+  <module>
+    <web>
+      <web-uri>/WineApp-web-1.war</web-uri>
+      <context-root>/WineApp-web</context-root>
+    </web>
+  </module>
+</application>
