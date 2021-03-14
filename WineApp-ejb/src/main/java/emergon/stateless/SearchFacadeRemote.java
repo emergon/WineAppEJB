@@ -10,4 +10,6 @@ public interface SearchFacadeRemote {
     public List<String> searchWine(String wineType);
     
     public Future<String> sendMessage(String message);
+    
+    List<String> searchWineByCountry(String country);
 }
