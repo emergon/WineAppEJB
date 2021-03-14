@@ -13,8 +13,8 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <a href="SearchFacadeClient">SearchFacadeClient</a>
-        <a href="ShoppingCartClient">ShoppingCartClient</a>
-        <a href="ShopperCountClient">ShopperCountClient</a>
+        <a href="SearchFacadeClient">SearchFacade</a>
+        <a href="ShoppingCartClient">ShoppingCart</a>
+        <a href="ShopperCountClient">ShopperCount</a>
     </body>
 </html>
