@@ -23,6 +23,12 @@
             <version>${jakartaee}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>emergon</groupId>
+            <artifactId>WineApp-ejb</artifactId>
+            <version>1</version>
+            <type>ejb</type>
+        </dependency>
     </dependencies>
     
      <build>
