@@ -1,9 +1,8 @@
 package emergon;
 
-import emergon.stateful.ShoppingCartBean;
+import emergon.stateful.ShoppingCartLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ShoppingCartClient extends HttpServlet {
 
     @EJB
-    ShoppingCartBean shoppingCart;
+    ShoppingCartLocal shoppingCart;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

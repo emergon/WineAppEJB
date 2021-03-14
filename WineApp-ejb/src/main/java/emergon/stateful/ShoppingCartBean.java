@@ -7,7 +7,7 @@ import javax.annotation.PreDestroy;
 import javax.ejb.Stateful;
 
 @Stateful(name = "ShoppingCart")
-public class ShoppingCartBean implements ShoppingCartLocal{
+public class ShoppingCartBean implements ShoppingCartRemote, ShoppingCartLocal{
 
     /*
     Lifecycle callbacks

@@ -1,7 +1,7 @@
 package emergon;
 
 import emergon.singleton.ShopperCountBean;
-import emergon.stateless.SearchFacadeBean;
+import emergon.stateless.SearchFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 public class SearchFacadeClient extends HttpServlet {
 
     @EJB
-    private SearchFacadeBean searchFacadeBean;
+    private SearchFacadeLocal searchFacade;
+    @EJB
     private ShopperCountBean shopperCountBean;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -32,7 +33,7 @@ public class SearchFacadeClient extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet SearchFacadeClient at " + request.getContextPath() + "</h1>");
             out.println("<h2>Looking for wines</h2>");
-            List<String> wines = searchFacadeBean.searchWine("Red");
+            List<String> wines = searchFacade.searchWine("Red");
             for (String wine : wines) {
                 out.println("<p>" + wine + "</p>");
             }
