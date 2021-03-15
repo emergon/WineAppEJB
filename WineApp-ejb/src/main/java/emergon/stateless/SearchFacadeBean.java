@@ -20,7 +20,7 @@ import javax.interceptor.Interceptors;
 @Stateless(mappedName = "SearchFacade")
 public class SearchFacadeBean implements SearchFacadeRemote, SearchFacadeLocal {
 
-    Map<String, String> countryMap;
+    Map<String, List<String>> countryMap;
 
     public SearchFacadeBean() {
         //https://github.com/Fameing/ejb3-example
@@ -30,22 +30,33 @@ public class SearchFacadeBean implements SearchFacadeRemote, SearchFacadeLocal {
     @PostConstruct
     public void initializeCountryWineList() {
         countryMap = new HashMap();
-        countryMap.put("Australia", "Sauvignon Blanc");
-        countryMap.put("Australia", "Grenache");
-        countryMap.put("France", "Gewurztraminer");
-        countryMap.put("France", "Bordeaux");
+        addWineToCountry("Australia", "Sauvignon Blanc");
+        addWineToCountry("Australia", "Grenache");
+        addWineToCountry("France", "Gewurztraminer");
+        addWineToCountry("France", "Bordeaux");
+    }
+    
+    private void addWineToCountry(String country, String wine){
+        List<String> countryWines = countryMap.get(country);
+        if(countryWines==null){
+            countryWines = new ArrayList();
+            countryWines.add(wine);
+            countryMap.put(country, countryWines);
+        }else{
+           countryWines.add(wine);            
+        }
     }
 
     @Interceptors(value = LogInterceptor.class)
     @Override
     public List<String> searchWineByCountry(String country) {
         List<String> wines = new ArrayList();
-        Set<Map.Entry<String, String>> entrySet = countryMap.entrySet();
-        Iterator<Map.Entry<String, String>> iterator = entrySet.iterator();
+        Set<Map.Entry<String,List<String>>> entrySet = countryMap.entrySet();
+        Iterator<Map.Entry<String, List<String>>> iterator = entrySet.iterator();
         while (iterator.hasNext()) {
-            Map.Entry<String, String> next = iterator.next();
+            Map.Entry<String, List<String>> next = iterator.next();
             if (next.getKey().toLowerCase().equals(country.toLowerCase())) {
-                wines.add(next.getValue());
+                return next.getValue();
             }
         }
         return wines;
