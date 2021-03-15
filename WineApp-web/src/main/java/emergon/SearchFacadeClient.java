@@ -32,8 +32,8 @@ public class SearchFacadeClient extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet SearchFacadeClient at " + request.getContextPath() + "</h1>");
-            out.println("<h2>Looking for wines</h2>");
-            List<String> wines = searchFacade.searchWine("Red");
+            out.println("<h2>Looking for wines in Australia</h2>");
+            List<String> wines = searchFacade.searchWineByCountry("australia");
             for (String wine : wines) {
                 out.println("<p>" + wine + "</p>");
             }
